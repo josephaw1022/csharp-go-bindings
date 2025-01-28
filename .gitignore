@@ -1,0 +1,32 @@
+# Ignore Go build outputs
+*.exe
+*.dll
+*.so
+*.dylib
+*.h
+*.o
+
+# Ignore Go modules
+go.sum
+go/pkg
+go/bin
+
+# Ignore IDE/editor-specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore .NET build outputs
+csharp-project/bin/
+csharp-project/obj/
+
+# Ignore user-specific files
+*.user
+*.swp
+
+# Ignore Taskfile temporary files
+**/Taskfile_dist/
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db

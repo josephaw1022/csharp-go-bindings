@@ -1,0 +1,37 @@
+version: '3'
+
+tasks:
+  default:
+    desc: "List all available tasks"
+    silent: true
+    cmds:
+      - task --list
+
+  build-go:
+    desc: Build the Go shared library
+    cmds:
+      - |
+        cd go-project && \
+        go build -o mylib.so -buildmode=c-shared mylib.go
+
+
+  copy-so:
+    desc: Copy the shared library to the .NET output directory
+    deps:
+      - task: build-go
+    cmds:
+      - |
+        cp go-project/mylib.so csharp-project/bin/Debug/net8.0/
+
+  build-dotnet:
+    desc: Build the .NET application
+    cmds:
+      - |
+        cd csharp-project && \
+        dotnet build
+
+  run-dotnet:
+    desc: Run the .NET application
+    cmds:
+      - |
+        dotnet csharp-project/bin/Debug/net8.0/csharp-project.dll
